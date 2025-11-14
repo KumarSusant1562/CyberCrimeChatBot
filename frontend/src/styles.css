@@ -9,3 +9,23 @@ body { font-family: Inter, Arial, sans-serif; margin:0; padding:20px; background
 .controls { display:flex; gap:8px; align-items:center; }
 button { padding:8px 12px; border:none; background:#0b64d8; color:white; border-radius:6px; cursor:pointer; }
 select, input { padding:8px; border-radius:6px; border:1px solid #ddd; }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

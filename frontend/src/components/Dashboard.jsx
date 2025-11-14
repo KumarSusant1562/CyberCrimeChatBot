@@ -33,49 +33,58 @@ export default function Dashboard(){
     return () => clearInterval(interval);
   }, []);
 
-  async function changeStatus(id, status){
+  async function changeStatus(report, status){
+    const id = report.reportId || report._id;
     try {
       await axios.patch(`${BASE}/api/reports/${id}`, { status });
-      load();
-      alert('Status updated and user notified via WhatsApp!');
+      await load();
+      setSelectedReport(prev => prev && prev._id === report._id ? {...prev, status} : prev);
+      alert('Status updated to "' + status + '" and user notified via WhatsApp!');
     } catch (err) {
-      alert('Failed to update status');
+      console.error('Status update error:', err);
+      alert('Failed to update status. Please try again.');
     }
   }
 
-  async function addNote(reportId) {
+  async function addNote(report) {
     if (!note.trim()) {
-      alert('Please enter a note');
+      alert('Please enter a note before sending');
       return;
     }
     
+    const id = report.reportId || report._id;
+    const noteToSend = note;
     try {
-      await axios.post(`${BASE}/api/reports/${reportId}/notes`, { note });
+      await axios.post(`${BASE}/api/reports/${id}/notes`, { note: noteToSend });
       setNote('');
-      load();
-      alert('Note added and sent to user via WhatsApp!');
+      await load();
+      const preview = noteToSend.length > 50 ? noteToSend.substring(0, 50) + '...' : noteToSend;
+      alert('Note sent to user via WhatsApp!\n\n"' + preview + '"');
     } catch (err) {
-      alert('Failed to add note');
+      console.error('Add note error:', err);
+      alert('Failed to send note. Please try again.');
     }
   }
 
-  async function sendImage(reportId) {
+  async function sendImage(report) {
     if (!imageUrl.trim()) {
       alert('Please enter an image URL');
       return;
     }
     
+    const id = report.reportId || report._id;
     try {
-      await axios.post(`${BASE}/api/reports/${reportId}/send-image`, { 
+      await axios.post(`${BASE}/api/reports/${id}/send-image`, { 
         imageUrl,
         message: imageMessage || 'Please review this image from our team.'
       });
       setImageUrl('');
       setImageMessage('');
-      load();
+      await load();
       alert('Image sent to user via WhatsApp!');
     } catch (err) {
-      alert('Failed to send image');
+      console.error('Send image error:', err);
+      alert('Failed to send image. Please check the URL and try again.');
     }
   }
 
@@ -161,6 +170,7 @@ export default function Dashboard(){
                   <th style={thStyle}>Report ID</th>
                   <th style={thStyle}>From</th>
                   <th style={thStyle}>Category</th>
+                  <th style={thStyle}>Business Type</th>
                   <th style={thStyle}>Description</th>
                   <th style={thStyle}>Media</th>
                   <th style={thStyle}>Status</th>
@@ -173,12 +183,14 @@ export default function Dashboard(){
                   <tr key={r._id} style={{ borderBottom: '1px solid #eee' }}>
                     <td style={tdStyle}>
                       <code style={{ 
-                        fontSize: '11px', 
-                        background: '#f0f0f0',
-                        padding: '4px 8px',
-                        borderRadius: '4px'
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        background: '#e8f4fd',
+                        color: '#2c5282',
+                        padding: '6px 12px',
+                        borderRadius: '6px'
                       }}>
-                        {r._id.slice(0, 8)}...
+                        {r.reportId || r._id.slice(0, 8) + '...'}
                       </code>
                     </td>
                     <td style={tdStyle}>{r.from}</td>
@@ -193,6 +205,22 @@ export default function Dashboard(){
                       }}>
                         {r.category}
                       </span>
+                    </td>
+                    <td style={tdStyle}>
+                      {r.subCategory ? (
+                        <span style={{
+                          background: '#fff3cd',
+                          color: '#856404',
+                          padding: '4px 12px',
+                          borderRadius: '12px',
+                          fontSize: '12px',
+                          fontWeight: '500'
+                        }}>
+                          {r.subCategory}
+                        </span>
+                      ) : (
+                        <span style={{ color: '#999', fontSize: '12px' }}>N/A</span>
+                      )}
                     </td>
                     <td style={{...tdStyle, maxWidth: '250px'}}>
                       {r.description.length > 80 
@@ -238,7 +266,7 @@ export default function Dashboard(){
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <select 
                           defaultValue={r.status} 
-                          onChange={(e)=>changeStatus(r._id, e.target.value)}
+                          onChange={(e)=>changeStatus(r, e.target.value)}
                           style={{
                             padding: '6px 10px',
                             borderRadius: '4px',
@@ -340,8 +368,15 @@ export default function Dashboard(){
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
                   <div>
                     <strong>Report ID:</strong><br/>
-                    <code style={{ fontSize: '12px', background: '#f0f0f0', padding: '4px 8px', borderRadius: '4px' }}>
-                      {selectedReport._id}
+                    <code style={{ 
+                      fontSize: '16px', 
+                      fontWeight: 'bold',
+                      background: '#e8f4fd', 
+                      color: '#2c5282',
+                      padding: '8px 16px', 
+                      borderRadius: '8px' 
+                    }}>
+                      {selectedReport.reportId || selectedReport._id}
                     </code>
                   </div>
                   <div>
@@ -361,6 +396,21 @@ export default function Dashboard(){
                       {selectedReport.category}
                     </span>
                   </div>
+                  {selectedReport.subCategory && (
+                    <div>
+                      <strong>Business Type:</strong><br/>
+                      <span style={{
+                        background: '#fff3cd',
+                        color: '#856404',
+                        padding: '4px 12px',
+                        borderRadius: '12px',
+                        fontSize: '13px',
+                        display: 'inline-block'
+                      }}>
+                        {selectedReport.subCategory}
+                      </span>
+                    </div>
+                  )}
                   <div>
                     <strong>Status:</strong><br/>
                     <span style={{
@@ -481,7 +531,7 @@ export default function Dashboard(){
                   }}
                 />
                 <button
-                  onClick={() => addNote(selectedReport._id)}
+                  onClick={() => addNote(selectedReport)}
                   style={{
                     marginTop: '10px',
                     padding: '10px 20px',
@@ -531,7 +581,7 @@ export default function Dashboard(){
                   }}
                 />
                 <button
-                  onClick={() => sendImage(selectedReport._id)}
+                  onClick={() => sendImage(selectedReport)}
                   style={{
                     marginTop: '10px',
                     padding: '10px 20px',
