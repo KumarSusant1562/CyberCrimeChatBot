@@ -161,7 +161,7 @@ VITE_API_BASE=http://localhost:3001
 
 3. **Start Frontend**
 ```bash
-npm run dev
+  node index_1930.js
 ```
 
 ## 📱 WhatsApp Commands
