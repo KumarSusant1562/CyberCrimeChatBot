@@ -4,6 +4,7 @@ node_modules/
 # Environment files (sensitive)
 .env
 .env.*.local
+c:\Users\laxmi\Desktop\0000\SETUP_WEBHOOK.md
 
 # Logs
 npm-debug.log*
