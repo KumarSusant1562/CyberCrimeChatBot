@@ -126,7 +126,7 @@ The Cyber Crime Helpline **1930** receives thousands of calls daily, resulting i
 1. **Install Dependencies**
 ```bash
 cd backend
-npm install
+node index_1930.js
 ```
 
 2. **Configure Environment Variables**
