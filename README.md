@@ -1,36 +1,123 @@
-# 🛡️ CyberCrime Helping Service - Complete System
+# 🛡️ 1930 Cyber Crime Helpline - WhatsApp Chatbot System
 
-A comprehensive cyber crime reporting system with WhatsApp integration, AI assistance, image uploads, and admin dashboard.
+<div align="center">
 
-## ✨ Features
+![Status](https://img.shields.io/badge/Status-Production%20Ready-success)
+![Platform](https://img.shields.io/badge/Platform-WhatsApp-25D366?logo=whatsapp)
+![License](https://img.shields.io/badge/License-Government%20Project-blue)
+![Version](https://img.shields.io/badge/Version-1.0.0-orange)
 
-### 📱 WhatsApp Integration (Twilio)
-- **Automated Welcome Messages**: Greet users with interactive menu
-- **Menu-Based Navigation**: Numbers (1-6) or text commands
-- **Real-Time Notifications**: Instant updates to users and admin
+**Official WhatsApp Chatbot for Cyber Crime Helpline 1930, Odisha**
 
-### 📋 Report Management
-- **Easy Reporting**: Users can report crimes via WhatsApp
-- **Image Upload Support**: Cloudinary integration for secure storage
-- **AI Categorization**: Gemini AI automatically categorizes reports
-- **Status Tracking**: Real-time status updates
+[Quick Start](#-quick-start) • [Features](#-features) • [Setup Guide](#-complete-setup-guide) • [Documentation](#-documentation)
 
-### 🤖 AI Assistant
-- **Gemini AI Integration**: Intelligent chat assistance
-- **Cyber Awareness**: Educational content on cyber safety
-- **Contextual Help**: Topic-based information
+</div>
 
-### 👨‍💼 Admin Dashboard
-- **Timeline View**: Complete history of each report
-- **Notes System**: Add notes that auto-send to users via WhatsApp
-- **Image Sending**: Send reference images to users
-- **Real-Time Updates**: Auto-refresh every 30 seconds
-- **Status Management**: Update status with WhatsApp notifications
+---
 
-### 🔐 Security Features
-- Secure image storage with Cloudinary
-- MongoDB for data persistence
-- Environment-based configuration
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Problem Statement](#-problem-statement)
+- [Features](#-features)
+- [Tech Stack](#️-tech-stack)
+- [Quick Start](#-quick-start)
+- [Complete Setup Guide](#-complete-setup-guide)
+- [WhatsApp Commands](#-whatsapp-commands)
+- [Admin Dashboard](#️-admin-dashboard)
+- [API Documentation](#-api-documentation)
+- [Deployment](#-deployment)
+- [Support](#-support)
+
+---
+
+## 🎯 Overview
+
+The **1930 Cyber Crime Helpline WhatsApp Chatbot** is a comprehensive digital solution designed to reduce wait times and improve accessibility for citizens reporting cyber crimes in Odisha. This system allows complainants to file reports 24/7 through WhatsApp, bypassing long phone queues.
+
+### 📊 Key Statistics
+- **47 Fraud Types** supported (23 Financial + 24 Social Media)
+- **24/7 Availability** via WhatsApp
+- **Instant Ticket Generation** (Format: 1930ODXXXXXX)
+- **Real-time Notifications** to users and admins
+- **Auto Document Upload** via WhatsApp
+- **Smart AI Categorization** using Gemini AI
+
+---
+
+## 🚨 Problem Statement
+
+### Background
+The Cyber Crime Helpline **1930** receives thousands of calls daily, resulting in:
+- ❌ Long wait times in call queues
+- ❌ Limited operating hours (business hours only)
+- ❌ Manual data collection prone to errors
+- ❌ No digital trail for complaint tracking
+- ❌ Delayed response times
+
+### Our Solution
+✅ **24/7 WhatsApp Access** - File complaints anytime, anywhere  
+✅ **Instant Processing** - No waiting in phone queues  
+✅ **Automated Ticket Generation** - Unique reference numbers (1930ODXXXXXX)  
+✅ **Document Upload** - Attach evidence directly via WhatsApp  
+✅ **Real-time Updates** - Get notified instantly on WhatsApp  
+✅ **Modern Admin Dashboard** - Manage all complaints efficiently  
+
+---
+
+### 🤖 For Citizens (WhatsApp Users)
+
+#### **New Complaint Filing**
+- **23 Financial Fraud Types**: UPI Fraud, Investment Fraud, Loan App Fraud, Digital Arrest, and more
+- **24 Social Media Fraud Types**: Facebook, Instagram, WhatsApp, Telegram hacking & impersonation
+- **Step-by-Step Data Collection**: 11 personal detail fields
+- **Document Upload**: Aadhaar, Bank Statement, Transaction Screenshots
+- **Instant Ticket Number**: Get 1930ODXXXXXX format ticket instantly
+- **Platform-Specific Guidance**: Direct links to Meta, X, Google grievance portals
+
+#### **Status Tracking**
+- Check complaint status anytime using ticket number
+- Get estimated resolution time
+- Receive WhatsApp updates on every action
+
+#### **Account Unfreeze**
+- Priority handling for frozen bank accounts
+- Direct agent callback scheduling
+- Fast-track processing
+
+#### **Other Services**
+- Cyber awareness tips
+- Emergency contact information
+- AI-powered chat assistance
+
+### 👨‍💼 For Administrators
+
+#### **Modern Dashboard**
+- **Real-time Statistics**: Total, Pending, Resolved complaints at a glance
+- **Advanced Filtering**: By status, type, priority, and search
+- **Comprehensive View**: All complaint details in organized sections
+- **Document Gallery**: View all uploaded evidence
+- **Timeline Tracking**: Complete activity history
+- **Auto-refresh**: Updates every 30 seconds
+
+#### **Complaint Management**
+- **Status Updates**: Change status (auto-sends WhatsApp notification)
+- **Priority Setting**: Mark as Low, Medium, High, or Critical
+- **Agent Assignment**: Assign complaints to team members
+- **Add Notes**: Notes automatically sent to users via WhatsApp
+- **Send Images**: Share reference images with complainants
+
+### 🤖 AI & Automation
+- **Auto-Categorization**: Gemini AI categorizes fraud types
+- **Chat Assistant**: Answers cyber safety questions
+- **Smart Notifications**: Context-aware WhatsApp messages
+- **Document Analysis**: AI-powered evidence review (optional)
+
+### 🔐 Security & Storage
+- **Secure Storage**: Cloudinary for encrypted document storage
+- **MongoDB**: Robust data persistence with indexing
+- **Environment Variables**: Sensitive credentials protected
+- **Session Management**: Secure user state tracking
+- **Audit Trail**: Complete timeline of all actions
 
 ## 🚀 Setup Instructions
 
@@ -55,7 +142,7 @@ Edit `.env` with your credentials:
 
 3. **Start Backend Server**
 ```bash
-npm run dev
+
 ```
 
 ### Frontend Setup
@@ -64,7 +151,7 @@ npm run dev
 ```bash
 cd frontend
 npm install
-```
+```node .\index_1930.js
 
 2. **Configure API Base**
 Create `.env` in frontend:
@@ -264,3 +351,4 @@ For issues or questions, refer to the documentation or check the logs in the bac
 ---
 
 **Built with ❤️ for CyberCrime Awareness and Prevention**
+
