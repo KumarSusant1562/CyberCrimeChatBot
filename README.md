@@ -358,7 +358,6 @@ For issues or questions, refer to the documentation or check the logs in the bac
 
 
 
-
-![WhatsApp Image 2025-11-14 at 18 20 31_3aa7917b](https://github.com/user-attachments/assets/2f855d19-686a-4a89-ae7a-686630e125fb)
+https://docs.google.com/document/d/1T5woQE358cvajugmpYnlvccXF6aMLRVa/edit?usp=drive_link&ouid=107546273594564822204&rtpof=true&sd=true
 
 
