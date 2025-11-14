@@ -1,5 +1,6 @@
 # Node dependencies
 node_modules/
+SETUP_WEBHOOK.md
 
 # Environment files (sensitive)
 .env
