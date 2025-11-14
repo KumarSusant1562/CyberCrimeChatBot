@@ -352,3 +352,13 @@ For issues or questions, refer to the documentation or check the logs in the bac
 
 **Built with ❤️ for CyberCrime Awareness and Prevention**
 
+
+
+** For Reference Check **
+
+
+
+
+![WhatsApp Image 2025-11-14 at 18 20 31_3aa7917b](https://github.com/user-attachments/assets/2f855d19-686a-4a89-ae7a-686630e125fb)
+
+
